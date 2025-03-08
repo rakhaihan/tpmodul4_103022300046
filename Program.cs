@@ -6,6 +6,8 @@ namespace tpmodul4_103022300046
     {
         static void Main(string[] args)
         {
+
+            // Bagian untuk KodePos
             Console.WriteLine("Masukkan nama kelurahan: ");
             string inputKelurahan = Console.ReadLine();
 
@@ -20,6 +22,33 @@ namespace tpmodul4_103022300046
             else
             {
                 Console.WriteLine("Kelurahan tidak valid.");
+            }
+
+            // Bagian untuk DoorMachine
+            DoorMachine doorMachine = new DoorMachine();
+            bool exit = false;
+
+            while (!exit)
+            {
+                Console.WriteLine($"State saat ini: {doorMachine.currentState}");
+                Console.WriteLine("Masukkan perintah (BukaPintu, KunciPintu, Exit):");
+                string input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "BukaPintu":
+                        doorMachine.activate(DoorMachine.Trigger.BukaPintu);
+                        break;
+                    case "KunciPintu":
+                        doorMachine.activate(DoorMachine.Trigger.KunciPintu);
+                        break;
+                    case "Exit":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("perintah salah.");
+                        break;
+                }
             }
         }
     }
